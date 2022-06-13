@@ -1,0 +1,7 @@
+- name: ADO.NET Data Provider
+  href: doc_ado/
+- name: Open API Client
+  href: doc_client/
+- name: API Documentation
+  href: api/
+  homepage: api/index.md
