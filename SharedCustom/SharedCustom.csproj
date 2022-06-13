@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  <DEEPHAVEN_SIGNING_KEYS Condition=" '$(DEEPHAVEN_SIGNING_KEYS)' == '' ">..\dev-keys</DEEPHAVEN_SIGNING_KEYS>
+    <AssemblyName>DeephavenOpenAPI.SharedCustom</AssemblyName>
+    <RootNamespace>Deephaven.OpenAPI.Shared</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.4</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworks>net461;net472;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Ide\Cmd\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk" Link="Deephaven.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0-preview.2" />
+  </ItemGroup>
+</Project>

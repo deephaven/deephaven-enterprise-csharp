@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Deephaven.OpenAPI</RootNamespace>
+    <TargetFrameworks>net461;net472;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+    <PackageReference Include="JUnitTestLogger" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\" />
+    <Folder Include="Core\API\" />
+    <Folder Include="Core\RPC\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Shared\Data\" />
+    <Folder Include="Core\RPC\Serialization\Java\" />
+    <Folder Include="Core\RPC\Serialization\Java\Math\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\DeephavenOpenAPI\DeephavenOpenAPI.csproj" />
+    <ProjectReference Include="..\SharedCustom\SharedCustom.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0-preview.2" />
+  </ItemGroup>
+</Project>
