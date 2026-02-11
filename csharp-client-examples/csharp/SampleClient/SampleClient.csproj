@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>DeephavenOpenAPI.SampleClient</AssemblyName>
+    <RootNamespace>SampleClient</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DeephavenOpenAPI" Version="2019.7.30.1" />
+  </ItemGroup>
+</Project>

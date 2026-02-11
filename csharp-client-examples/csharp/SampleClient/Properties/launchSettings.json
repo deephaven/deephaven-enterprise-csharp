@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SampleClient": {
+      "commandName": "Project",
+      "commandLineArgs": "wss://openapi-bhs.int.illumon.com:8123/socket iris iris"
+    }
+  }
+}

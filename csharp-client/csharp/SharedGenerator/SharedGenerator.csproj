@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageId>DeephavenOpenAPI.SharedGenerator</PackageId>
+    <Company>Deephaven Data Labs</Company>
+    <Product />
+    <RootNamespace>Deephaven.OpenAPI.SharedGenerator</RootNamespace>
+    <AssemblyName>DeephavenOpenAPI.SharedGenerator</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <!-- forces SDK to copy dependencies into build output to make packing easier -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <StartupObject>DeephavenOpenAPI.Program</StartupObject>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="package_namespace.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="package_namespace.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.CodeDom" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\SharedCustom\SharedCustom.csproj" />
+  </ItemGroup>
+
+</Project>

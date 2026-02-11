@@ -1,0 +1,3 @@
+﻿com.google.gwt.user.client.rpc.core.java		Deephaven.OpenAPI.Core.RPC.Serialization.Java
+org.gwtproject.rpc.core.java				    Deephaven.OpenAPI.Core.RPC.Serialization.Java
+com.illumon.iris.web.shared						Deephaven.OpenAPI.Shared

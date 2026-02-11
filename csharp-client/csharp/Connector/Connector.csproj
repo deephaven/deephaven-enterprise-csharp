@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Deephaven.Connector</RootNamespace>
+    <AssemblyName>Deephaven.Connector</AssemblyName>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeephavenOpenAPI\DeephavenOpenAPI.csproj" />
+    <ProjectReference Include="..\SharedCustom\SharedCustom.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Internal\" />
+    <Folder Include="Internal\Parameters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.3" />
+  </ItemGroup>
+</Project>

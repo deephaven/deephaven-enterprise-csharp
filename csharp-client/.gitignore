@@ -1,0 +1,9 @@
+**/bin
+**/obj
+packages
+.vs
+*.csproj.user
+launchSettings.json
+results.xml
+docfx.zip
+

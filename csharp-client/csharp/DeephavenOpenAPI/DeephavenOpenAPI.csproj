@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+  We have some special directives here in order to support IDS-6817:
+  1. The special "TargetsForTfmSpecificBuildOutput" tag in the PropertyGroup
+  2. The custom target "CopyProjectReferencesToPackage"
+  3. The PrivateAssets="all" attributes on the ProjectReferences.
+  The purpose of these are to coerce nuget into building a package for us that includes the referenced DLLs.
+  See also: https://github.com/NuGet/Home/issues/3891
+  -->
+
+  <PropertyGroup>
+    <DEEPHAVEN_SIGNING_KEYS Condition=" '$(DEEPHAVEN_SIGNING_KEYS)' == '' ">..\dev-keys</DEEPHAVEN_SIGNING_KEYS>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    <AssemblyName>DeephavenOpenAPI</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.4</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace />
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk" Link="Deephaven.snk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generated\" />
+    <Folder Include="Deephaven\" />
+    <Folder Include="Deephaven\OpenAPI\" />
+    <Folder Include="Deephaven\OpenAPI\Client\" />
+    <Folder Include="Deephaven\OpenAPI\Client\Internal\" />
+    <Folder Include="Deephaven\OpenAPI\Client\Internal\TableOperations\" />
+    <Folder Include="Deephaven\OpenAPI\Client\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Deephaven\OpenAPI\Client\Data\Conditions\**" />
+    <EmbeddedResource Remove="Deephaven\OpenAPI\Client\Types\**" />
+    <EmbeddedResource Remove="Deephaven\OpenAPI\Shared\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\SharedCustom\SharedCustom.csproj" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.3" />
+  </ItemGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+</Project>
