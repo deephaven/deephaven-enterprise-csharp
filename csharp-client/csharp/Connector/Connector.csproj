@@ -3,7 +3,7 @@
   <PropertyGroup>
     <RootNamespace>Deephaven.Connector</RootNamespace>
     <AssemblyName>Deephaven.Connector</AssemblyName>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
