@@ -5,7 +5,7 @@
     <AssemblyName>DeephavenOpenAPI.SharedCustom</AssemblyName>
     <RootNamespace>Deephaven.OpenAPI.Shared</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.4</Version>
+    <Version>24.5.551.1</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk</AssemblyOriginatorKeyFile>
 	  <TargetFramework>net8.0</TargetFramework>

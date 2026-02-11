@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>DeephavenOpenAPI.SampleClient</AssemblyName>
     <RootNamespace>SampleClient</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DeephavenOpenAPI" Version="2019.7.30.1" />
+    <PackageReference Include="DeephavenOpenAPI" Version="24.5.551.1" />
   </ItemGroup>
 </Project>

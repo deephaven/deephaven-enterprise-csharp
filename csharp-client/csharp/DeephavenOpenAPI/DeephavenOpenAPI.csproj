@@ -13,7 +13,7 @@
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     <AssemblyName>DeephavenOpenAPI</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.4</Version>
+    <Version>24.5.551.1</Version>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk</AssemblyOriginatorKeyFile>
     <RootNamespace />
