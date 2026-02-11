@@ -9,26 +9,26 @@ namespace Deephaven.OpenAPI.Client.Internal
     /// <summary>
     /// Thin, immutable wrapper around QueryConfig
     /// </summary>
-    internal class PersistentQueryConfig : IPersistentQueryConfig
-    {
-        private readonly QueryConfig _queryConfig;
+    internal class PersistentQueryConfig : IPersistentQueryConfig {
+        private readonly QueryStatusWrapper _wrapper;
 
-        public PersistentQueryConfig(QueryConfig queryConfig) => _queryConfig = queryConfig;
+        public PersistentQueryConfig(QueryStatusWrapper wrapper) => _wrapper = wrapper;
 
-        public long Serial => _queryConfig.Serial;
-        public string ScriptLanguage => _queryConfig.ScriptLanguage;
-        public string ConfigurationType => _queryConfig.ConfigurationType;
-        public string Name => _queryConfig.Name;
-        public string Owner => _queryConfig.Owner;
+        public long Serial => _wrapper.Designated.Serial;
+        public string Name => _wrapper.Config.Name;
+        public string ServiceId => _wrapper.Designated.ServiceId;
 
-        public PersistentQueryStatus Status => (PersistentQueryStatus)Enum.Parse(typeof(PersistentQueryStatus), _queryConfig.Status);
-        public string[][] Objects => _queryConfig.Objects;
-        public string[] Scheduling => _queryConfig.Scheduling;
-        public string FullStackTrace => _queryConfig.FullStackTrace;
-        public string WebsocketUrl => _queryConfig.WebsocketUrl;
-        public string ServiceId => _queryConfig.ServiceId;
+        public PersistentQueryStatus Status {
+            get {
+                var designated = _wrapper.Designated;
+                return designated == null
+                  ? PersistentQueryStatus.Uninitialized
+                  : (PersistentQueryStatus)Enum.Parse(typeof(PersistentQueryStatus),
+                    designated.Status);
+            }
+        }
 
-        public IPersistentQueryConfigInternal Internal => new MyInternal(_queryConfig.WebsocketUrl);
+        public IPersistentQueryConfigInternal Internal => new MyInternal(_wrapper.Designated.WebsocketUrl);
 
         private class MyInternal : IPersistentQueryConfigInternal
         {

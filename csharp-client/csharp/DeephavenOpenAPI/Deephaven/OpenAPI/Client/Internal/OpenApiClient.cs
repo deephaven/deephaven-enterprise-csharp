@@ -509,11 +509,10 @@ namespace Deephaven.OpenAPI.Client.Internal
         /// <summary>
         /// Called by the server when a new persistent query is added.
         /// </summary>
-        /// <param name="config">Configuration information for the new persistent query</param>
-        public void QueryAdded(QueryConfig config)
-        {
-            var workerInfo = new PersistentQueryConfig(config);
-            _queryConfigMap[config.Serial] = workerInfo;
+        /// <param name="wrapper">Configuration information for the new persistent query</param>
+        public void QueryAdded(QueryStatusWrapper wrapper) {
+            var workerInfo = new PersistentQueryConfig(wrapper);
+            _queryConfigMap[wrapper.Config.Serial] = workerInfo;
             _openApiListener?.OnPersistentQueryAdded(_openApiClient, workerInfo);
         }
 
@@ -521,10 +520,10 @@ namespace Deephaven.OpenAPI.Client.Internal
         /// Called by the server when an existing persistent query is modified.
         /// </summary>
         /// <param name="config">Configuration information for the modified persistent query</param>
-        public void QueryModified(QueryConfig config)
+        public void QueryModified(QueryStatusWrapper wrapper)
         {
-            var workerInfo = new PersistentQueryConfig(config);
-            _queryConfigMap[config.Serial] = workerInfo;
+            var workerInfo = new PersistentQueryConfig(wrapper);
+            _queryConfigMap[wrapper.Config.Serial] = workerInfo;
             _openApiListener?.OnPersistentQueryModified(_openApiClient, workerInfo);
         }
 
@@ -532,10 +531,10 @@ namespace Deephaven.OpenAPI.Client.Internal
         /// Called by the server when a persistent query is removed.
         /// </summary>
         /// <param name="config">Configuration information for the removed persistent query</param>
-        public void QueryRemoved(QueryConfig config)
+        public void QueryRemoved(QueryStatusWrapper wrapper)
         {
             // if for some reason we didn't have the config in the first place, we do nothing
-            if (_queryConfigMap.TryRemove(config.Serial, out var workerInfo))
+            if (_queryConfigMap.TryRemove(wrapper.Config.Serial, out var workerInfo))
             {
                 _openApiListener?.OnPersistentQueryRemoved(_openApiClient, workerInfo);
             }

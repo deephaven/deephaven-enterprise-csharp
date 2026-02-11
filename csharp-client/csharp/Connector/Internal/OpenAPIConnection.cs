@@ -44,15 +44,15 @@ namespace Deephaven.Connector.Internal
             {
             }
 
-            public void QueryAdded(QueryConfig config)
+            public void QueryAdded(QueryStatusWrapper wrapper)
             {
             }
 
-            public void QueryModified(QueryConfig config)
+            public void QueryModified(QueryStatusWrapper wrapper)
             {
             }
 
-            public void QueryRemoved(QueryConfig config)
+            public void QueryRemoved(QueryStatusWrapper wrapper)
             {
             }
 

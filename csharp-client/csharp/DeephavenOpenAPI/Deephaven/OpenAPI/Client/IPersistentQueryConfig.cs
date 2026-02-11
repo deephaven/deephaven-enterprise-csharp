@@ -12,14 +12,8 @@ namespace Deephaven.OpenAPI.Client
     public interface IPersistentQueryConfig
     {
         long Serial { get; }
-        string ScriptLanguage { get; }
-        string ConfigurationType { get; }
         string Name { get; }
-        string Owner { get; }
         PersistentQueryStatus Status { get; }
-        string[][] Objects { get; }
-        string[] Scheduling { get; }
-        string FullStackTrace { get; }
         string ServiceId { get; }
 
         IPersistentQueryConfigInternal Internal { get; }
