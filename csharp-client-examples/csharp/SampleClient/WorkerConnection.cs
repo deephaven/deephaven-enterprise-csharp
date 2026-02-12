@@ -160,19 +160,18 @@ namespace SampleClient
         private Dictionary<TableHandle, InitialTableDefinition> _definitions =
             new Dictionary<TableHandle, InitialTableDefinition>();
 
-        public WorkerConnection(QueryConfig config, ConnectToken connectToken)
+        public WorkerConnection(QueryStatusWrapper wrapper, ConnectToken connectToken)
         {
             _myClient = new MyClient(_definitions);
             _clientId++;
-            _clientTableIdFactory = new ClientTableIdFactory(_clientId);
 
             var builder = ServerBuilder<WorkerServer, WorkerClient>
                 .Of((factory, send, message, close) => new WorkerServer_Impl(factory, send, message, close))
-                .SetUrl(config.WebsocketUrl);
-            _server = builder.Start(_myClient);
+                .SetUrl(wrapper.Designated.WebsocketUrl);
+            _server = builder.Start(_myClient, 60 * 1000);
 
-            ConnectionSuccess connectionSuccess = _server.Register(_clientId, config.ServiceId, connectToken);
-            _clientTableIdFactory.ConnectionId = connectionSuccess.ConnectionId;
+            ConnectionSuccess connectionSuccess = _server.Register(_clientId, wrapper.Designated.ServiceId, connectToken);
+            _clientTableIdFactory = new ClientTableIdFactory(_clientId, connectionSuccess.ConnectionId);
             Console.Out.WriteLine("Connected to worker, connection id: " + connectionSuccess.ConnectionId);
         }
 
@@ -195,10 +194,11 @@ namespace SampleClient
                 definition =>
                 {
                     Console.WriteLine("Got initial table definition, columns:");
-                    Console.WriteLine(definition.Definition.Columns.Select(c => c.Name).Aggregate((n1, n2) => n1 + ", " + n2));
+                    Console.WriteLine(definition.Columns.Select(c => c.Name).Aggregate((n1, n2) => n1 + ", " + n2));
                     _definitions[handle] = definition;
                 },
-                err => { Console.WriteLine("Error fetching table: " + err); });
+                failure => Console.WriteLine($"Failure fetching table: {failure}"),
+                err => Console.WriteLine($"Error fetching table: {err}"));
             return handle;
         }
 
@@ -225,7 +225,8 @@ namespace SampleClient
                 request.Ops = new BatchTableRequestSerializedTableOps[] {op};
                 Console.WriteLine("first fetching preemptive version of table...");
                 _server.BatchAsync(request, successCallback => { Subscribe(successCallback.Success[0]); },
-                    err => { Console.Error.WriteLine("Error making table preemptive: " + err); });
+                  failure => Console.Error.WriteLine($"Failure making table preemptive: {failure}"),
+                  err => Console.Error.WriteLine($"Error making table preemptive: {err}"));
             }
             else
             {
@@ -245,7 +246,7 @@ namespace SampleClient
                 Console.WriteLine("No definition found for handle: " + handle);
                 return;
             }
-            var columns = definition.Definition.Columns;
+            var columns = definition.Columns;
             var columnBitArray = new BitArray(columns.Length);
             columnBitArray.SetAll(true);
 
@@ -300,7 +301,8 @@ namespace SampleClient
                         }
                     }
                 },
-                err => { Console.WriteLine("Error getting table snapshot: " + err); });
+                failure => Console.WriteLine($"Failure getting table snapshot: {failure}"),
+                err => Console.WriteLine($"Error getting table snapshot: {err}"));
         }
 
         /// <summary>

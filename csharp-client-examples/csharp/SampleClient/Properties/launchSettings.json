@@ -2,7 +2,7 @@
   "profiles": {
     "SampleClient": {
       "commandName": "Project",
-      "commandLineArgs": "wss://openapi-bhs.int.illumon.com:8123/socket iris iris"
+      "commandLineArgs": "wss://your-server.domain.example:8123/socket\r\nusername\r\npassword"
     }
   }
 }

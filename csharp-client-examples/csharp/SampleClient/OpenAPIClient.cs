@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using Deephaven.OpenAPI.Core.API;
-using Deephaven.OpenAPI.Shared.Primary;
+﻿using Deephaven.OpenAPI.Core.API;
 using Deephaven.OpenAPI.Shared.Cmd;
 using Deephaven.OpenAPI.Shared.Data;
+using Deephaven.OpenAPI.Shared.Primary;
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace SampleClient
 {
@@ -22,21 +22,15 @@ namespace SampleClient
             /// <summary>
             /// A map to keep track of running persistent queries
             /// </summary>
-            private Dictionary<string, QueryConfig> _queryConfigMap = new Dictionary<string, QueryConfig>();
+            private readonly Dictionary<string, QueryStatusWrapper> _queryConfigMap = new();
 
             /// <summary>
             /// A reference to the server this client is paired with.
             /// </summary>
             private WebApiServer _server;
 
-            public QueryConfig GetQueryConfig(string name)
-            {
-                QueryConfig queryConfig;
-                if (_queryConfigMap.TryGetValue(name, out queryConfig))
-                {
-                    return queryConfig;
-                }
-                return null;
+            public QueryStatusWrapper GetQueryStatusWrapper(string name) {
+              return _queryConfigMap.GetValueOrDefault(name);
             }
 
             /// <summary>
@@ -81,22 +75,28 @@ namespace SampleClient
             /// </summary>
             public void OnOpen()
             {
-                Console.WriteLine("Open");
+                Console.WriteLine("Connection is Open");
             }
 
             /// <summary>
             /// Called by the server when a new persistent query is added.
             /// </summary>
-            /// <param name="config">Configuration information for the new persistent query</param>
-            public void QueryAdded(QueryConfig config)
+            /// <param name="wrapper">Configuration information for the new persistent query</param>
+            public void QueryAdded(QueryStatusWrapper wrapper)
             {
-                _queryConfigMap[config.Name] = config;
-                Console.WriteLine("Query added: " + config.Name + " [" + config.Status + "] " +
-                                      config.WebsocketUrl);
-                if (config.Status.Equals("Running"))
+                var config = wrapper.Config;
+                _queryConfigMap[config.Name] = wrapper;
+                if (wrapper.Designated == null)
+                {
+                  Console.WriteLine($"Query not started: {config.Name}");
+                  return;
+                }
+                Console.WriteLine("Query added: " + config.Name + " [" + wrapper.Designated.Status + "] " +
+                                      wrapper.Designated.WebsocketUrl);
+                if (wrapper.Designated.Status.Equals("Running"))
                 {
                     Console.WriteLine("Objects:");
-                    foreach (var configObject in config.Objects)
+                    foreach (var configObject in wrapper.Designated.Objects)
                     {
                         Console.WriteLine("\t" + configObject[0] + " " + configObject[1]);
                     }
@@ -107,20 +107,30 @@ namespace SampleClient
             /// Called by the server when an existing persistent query is modified.
             /// </summary>
             /// <param name="config">Configuration information for the modified persistent query</param>
-            public void QueryModified(QueryConfig config)
+            public void QueryModified(QueryStatusWrapper wrapper)
             {
-                _queryConfigMap[config.Name] = config;
-                Console.Out.WriteLine("Query modified: " + config.Name);
+                _queryConfigMap[wrapper.Config.Name] = wrapper;
+                Console.Out.WriteLine("Query modified: " + wrapper.Config.Name);
             }
 
             /// <summary>
             /// Called by the server when a persistent query is removed.
             /// </summary>
             /// <param name="config">Configuration information for the removed persistent query</param>
-            public void QueryRemoved(QueryConfig config)
+            public void QueryRemoved(QueryStatusWrapper wrapper)
             {
-                _queryConfigMap.Remove(config.Name);
-                Console.Out.WriteLine("Query removed: " + config.Name);
+                _queryConfigMap.Remove(wrapper.Config.Name);
+                Console.Out.WriteLine("Query removed: " + wrapper.Config.Name);
+            }
+
+            public void PreauthenticationKeepAlive()
+            {
+              // do nothing
+            }
+
+            public void Ids6976(char[] bugMitigation1, sbyte[] bugMitigation2)
+            {
+              // do nothing
             }
 
             public void SetServer(WebApiServer server)
@@ -140,7 +150,7 @@ namespace SampleClient
             _serverBuilder = ServerBuilder<WebApiServer, WebApiClient>.Of(
                 (factory, send, message, close) => new WebApiServer_Impl(factory, send, message, close)).SetUrl(url);
             _client = new MyClient();
-            _server = _serverBuilder.Start(_client);
+            _server = _serverBuilder.Start(_client, 60 * 1000);
 
             // login using a blocking function method
             // Like all Open API methods, this can also be called asynchronously if desired
@@ -160,8 +170,10 @@ namespace SampleClient
 
         private void ScheduleAuthTokenRefresh(object o)
         {
-            _server.RefreshAsync(refreshToken => { _refreshToken = refreshToken; Console.WriteLine("Auth token refreshed.");},
-                error => { Console.WriteLine("Error refreshing token: " + error); });
+            _server.RefreshAsync(
+              refreshToken => { _refreshToken = refreshToken; Console.WriteLine("Auth token refreshed.");},
+              message => Console.WriteLine($"Failure refreshing token: {message}"),
+                error => Console.WriteLine($"Error refreshing token: {error}"));
         }
 
         public ConnectToken LastConnectToken { get; set; }
@@ -173,16 +185,16 @@ namespace SampleClient
         {
             _server.CreateAuthTokenAsync("RemoteQueryProcessor", token =>
                 {
-
                     LastConnectToken = token;
                     Console.WriteLine("Got ConnectToken");
                 },
-                err => Console.WriteLine("Error getting connect token: " + err));
+                message => Console.WriteLine($"Failure getting connect token: {message}"),
+                error => Console.WriteLine($"Error getting connect token: {error}"));
         }
 
-        public QueryConfig GetQueryConfig(string name)
+        public QueryStatusWrapper GetQueryStatusWrapper(string name)
         {
-            return _client.GetQueryConfig(name);
+            return _client.GetQueryStatusWrapper(name);
         }
 
         public void Dispose()

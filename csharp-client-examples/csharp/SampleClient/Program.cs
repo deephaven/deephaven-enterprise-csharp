@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Linq;
 
+using Range = Deephaven.OpenAPI.Shared.Data.Range;
+
 namespace SampleClient
 {
     /// <summary>
@@ -24,6 +26,8 @@ namespace SampleClient
                 if(args.Length != 3)
                 {
                     Console.WriteLine("usage: SampleClient <url> <username> <password>");
+                    Console.WriteLine("url is in the form wss://{host}:{port}/socket");
+                    Console.WriteLine("port is typically 8123");
                     return;
                 }
 
@@ -32,33 +36,35 @@ namespace SampleClient
                 {
                     WorkerConnection workerConnection = null;
                     TableHandle tableHandle = null;
-                    var exit = false;
-                    while (!exit)
+                    while (true)
                     {
                         Console.Out.WriteLine("Enter an instruction:");
 
                         var line = Console.In.ReadLine();
-                        if (line.Equals("exit"))
+                        if (line == null || line.Equals("exit"))
                         {
                             break;
                         }
                         // ask the server for a connect token (required for new worker connection)
-                        else if (line.Equals("t"))
+                        
+                        if (line.Equals("rct"))
                         {
                             client.RefreshConnectToken();
+                            continue;
                         }
+
                         // open a connection to a specific running worker/persistent query
-                        else if (line.StartsWith("o "))
+                        if (line.StartsWith("o "))
                         {
                             if (workerConnection == null)
                             {
                                 if (client.LastConnectToken != null)
                                 {
                                     var name = line.Substring(2).Trim();
-                                    var queryConfig = client.GetQueryConfig(name);
-                                    if (queryConfig != null)
+                                    var wrapper = client.GetQueryStatusWrapper(name);
+                                    if (wrapper != null)
                                     {
-                                        workerConnection = new WorkerConnection(queryConfig, client.LastConnectToken);
+                                        workerConnection = new WorkerConnection(wrapper, client.LastConnectToken);
                                     }
                                     else
                                     {
@@ -70,9 +76,11 @@ namespace SampleClient
                                     Console.WriteLine("No connect token!");
                                 }
                             }
+                            continue;
                         }
+
                         // close an open worker connection, if there is one
-                        else if (line.StartsWith("c"))
+                        if (line.StartsWith("c"))
                         {
                             if (workerConnection != null)
                             {
@@ -84,9 +92,11 @@ namespace SampleClient
                             {
                                 Console.WriteLine("No worker to close!");
                             }
+                            continue;
                         }
+
                         // fetch a table by name from the connected worker
-                        else if (line.StartsWith("t "))
+                        if (line.StartsWith("t "))
                         {
                             if (workerConnection != null)
                             {
@@ -98,9 +108,12 @@ namespace SampleClient
                             {
                                 Console.WriteLine("No worker to fetch table from!");
                             }
+
+                            continue;
                         }
+
                         // subscribe to fetched table
-                        else if (line.StartsWith("s "))
+                        if (line.Equals("s"))
                         {
                             if (workerConnection != null)
                             {
@@ -118,9 +131,11 @@ namespace SampleClient
                             {
                                 Console.WriteLine("No worker connection!");
                             }
+                            continue;
                         }
+
                         // unsubscribe from the fetched table
-                        else if (line.StartsWith("u "))
+                        if (line.Equals("u"))
                         {
                             if (workerConnection != null)
                             {
@@ -138,9 +153,11 @@ namespace SampleClient
                             {
                                 Console.WriteLine("No worker connection!");
                             }
+                            continue;
                         }
+
                         // get a snapshot of the specified rows from the fetched table
-                        else if (line.StartsWith("snap "))
+                        if (line.StartsWith("snap "))
                         {
                             if (workerConnection != null)
                             {
@@ -158,7 +175,7 @@ namespace SampleClient
                                     var last = Int64.Parse(tokens[1]);
                                     rows.AddRange(new Range(first, last));
                                     var initialTableDefinition = workerConnection.GetTableDefinition(tableHandle);
-                                    var columnDefinitions = initialTableDefinition.Definition.Columns;
+                                    var columnDefinitions = initialTableDefinition.Columns;
                                     var columns = new BitArray(columnDefinitions.Length);
                                     if (tokens.Length > 2)
                                     {
@@ -190,6 +207,7 @@ namespace SampleClient
                             {
                                 Console.WriteLine("No worker connection!");
                             }
+                            continue;
                         }
                     }
                 }

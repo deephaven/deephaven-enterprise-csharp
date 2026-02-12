@@ -10,4 +10,8 @@
   <ItemGroup>
     <PackageReference Include="DeephavenOpenAPI" Version="24.5.551.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>
