@@ -1,4 +1,3 @@
-# deephaven-enterprise-csharp
+# Deephaven Legacy Client
 
-This branch is a placeholder. Please checkout `release/treasureplus` and/or `release/bard` branch(es)
-
+This branch is a placeholder. Please checkout the `release/grizzly` branch.
