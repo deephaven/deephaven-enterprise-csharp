@@ -1,0 +1,201 @@
+### YamlMime:ManagedReference
+items:
+- uid: Deephaven.DemoConstants
+  commentId: T:Deephaven.DemoConstants
+  id: DemoConstants
+  parent: Deephaven
+  children:
+  - Deephaven.DemoConstants.HistoricalNamespace
+  - Deephaven.DemoConstants.HistoricalTable
+  - Deephaven.DemoConstants.IntradayNamespace
+  - Deephaven.DemoConstants.IntradayTable
+  langs:
+  - csharp
+  - vb
+  name: DemoConstants
+  nameWithType: DemoConstants
+  fullName: Deephaven.DemoConstants
+  type: Class
+  source:
+    remote:
+      path: open-api/csharp-client/csharp/DeephavenOpenAPI/DemoConstants.cs
+      branch: kosak_privkey
+      repo: git@gitlab.deephaven.io:illumon/iris.git
+    id: DemoConstants
+    path: DeephavenOpenAPI/DemoConstants.cs
+    startLine: 8
+  assemblies:
+  - DeephavenOpenAPI
+  namespace: Deephaven
+  summary: "\nThis class contains certain constants (e.g. table namespaces, table names) used by Deephaven demo code.\n"
+  example: []
+  syntax:
+    content: 'public static class DemoConstants : object'
+    content.vb: >-
+      Public Module DemoConstants
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Deephaven.DemoConstants.HistoricalNamespace
+  commentId: F:Deephaven.DemoConstants.HistoricalNamespace
+  id: HistoricalNamespace
+  parent: Deephaven.DemoConstants
+  langs:
+  - csharp
+  - vb
+  name: HistoricalNamespace
+  nameWithType: DemoConstants.HistoricalNamespace
+  fullName: Deephaven.DemoConstants.HistoricalNamespace
+  type: Field
+  source:
+    remote:
+      path: open-api/csharp-client/csharp/DeephavenOpenAPI/DemoConstants.cs
+      branch: kosak_privkey
+      repo: git@gitlab.deephaven.io:illumon/iris.git
+    id: HistoricalNamespace
+    path: DeephavenOpenAPI/DemoConstants.cs
+    startLine: 13
+  assemblies:
+  - DeephavenOpenAPI
+  namespace: Deephaven
+  summary: "\nThis is the namespace for our example historical table.\n"
+  example: []
+  syntax:
+    content: public const string HistoricalNamespace = null
+    return:
+      type: System.String
+    content.vb: Public Const HistoricalNamespace As String = Nothing
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Deephaven.DemoConstants.HistoricalTable
+  commentId: F:Deephaven.DemoConstants.HistoricalTable
+  id: HistoricalTable
+  parent: Deephaven.DemoConstants
+  langs:
+  - csharp
+  - vb
+  name: HistoricalTable
+  nameWithType: DemoConstants.HistoricalTable
+  fullName: Deephaven.DemoConstants.HistoricalTable
+  type: Field
+  source:
+    remote:
+      path: open-api/csharp-client/csharp/DeephavenOpenAPI/DemoConstants.cs
+      branch: kosak_privkey
+      repo: git@gitlab.deephaven.io:illumon/iris.git
+    id: HistoricalTable
+    path: DeephavenOpenAPI/DemoConstants.cs
+    startLine: 17
+  assemblies:
+  - DeephavenOpenAPI
+  namespace: Deephaven
+  summary: "\nThis is an example historical (aka non-ticking or static) table.\n"
+  example: []
+  syntax:
+    content: public const string HistoricalTable = null
+    return:
+      type: System.String
+    content.vb: Public Const HistoricalTable As String = Nothing
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Deephaven.DemoConstants.IntradayNamespace
+  commentId: F:Deephaven.DemoConstants.IntradayNamespace
+  id: IntradayNamespace
+  parent: Deephaven.DemoConstants
+  langs:
+  - csharp
+  - vb
+  name: IntradayNamespace
+  nameWithType: DemoConstants.IntradayNamespace
+  fullName: Deephaven.DemoConstants.IntradayNamespace
+  type: Field
+  source:
+    remote:
+      path: open-api/csharp-client/csharp/DeephavenOpenAPI/DemoConstants.cs
+      branch: kosak_privkey
+      repo: git@gitlab.deephaven.io:illumon/iris.git
+    id: IntradayNamespace
+    path: DeephavenOpenAPI/DemoConstants.cs
+    startLine: 22
+  assemblies:
+  - DeephavenOpenAPI
+  namespace: Deephaven
+  summary: "\nThis is the namespace for our example intraday table.\n"
+  example: []
+  syntax:
+    content: public const string IntradayNamespace = null
+    return:
+      type: System.String
+    content.vb: Public Const IntradayNamespace As String = Nothing
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Deephaven.DemoConstants.IntradayTable
+  commentId: F:Deephaven.DemoConstants.IntradayTable
+  id: IntradayTable
+  parent: Deephaven.DemoConstants
+  langs:
+  - csharp
+  - vb
+  name: IntradayTable
+  nameWithType: DemoConstants.IntradayTable
+  fullName: Deephaven.DemoConstants.IntradayTable
+  type: Field
+  source:
+    remote:
+      path: open-api/csharp-client/csharp/DeephavenOpenAPI/DemoConstants.cs
+      branch: kosak_privkey
+      repo: git@gitlab.deephaven.io:illumon/iris.git
+    id: IntradayTable
+    path: DeephavenOpenAPI/DemoConstants.cs
+    startLine: 26
+  assemblies:
+  - DeephavenOpenAPI
+  namespace: Deephaven
+  summary: "\nThis is an example intraday (aka ticking or dynamic) table.\n"
+  example: []
+  syntax:
+    content: public const string IntradayTable = null
+    return:
+      type: System.String
+    content.vb: Public Const IntradayTable As String = Nothing
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Deephaven
+  commentId: N:Deephaven
+  name: Deephaven
+  nameWithType: Deephaven
+  fullName: Deephaven
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

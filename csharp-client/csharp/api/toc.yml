@@ -1,0 +1,237 @@
+### YamlMime:TableOfContent
+- uid: Deephaven
+  name: Deephaven
+  items:
+  - uid: Deephaven.DemoConstants
+    name: DemoConstants
+- uid: Deephaven.Connector
+  name: Deephaven.Connector
+  items:
+  - uid: Deephaven.Connector.DeephavenCommand
+    name: DeephavenCommand
+  - uid: Deephaven.Connector.DeephavenConnection
+    name: DeephavenConnection
+  - uid: Deephaven.Connector.DeephavenConnectionStringBuilder
+    name: DeephavenConnectionStringBuilder
+  - uid: Deephaven.Connector.DeephavenConnectionStringBuilder.DeephavenConnectionStringPropertyAttribute
+    name: DeephavenConnectionStringBuilder.DeephavenConnectionStringPropertyAttribute
+  - uid: Deephaven.Connector.DeephavenDataReader
+    name: DeephavenDataReader
+  - uid: Deephaven.Connector.DeephavenParameter
+    name: DeephavenParameter
+  - uid: Deephaven.Connector.DeephavenParameterCollection
+    name: DeephavenParameterCollection
+  - uid: Deephaven.Connector.DeephavenProviderFactory
+    name: DeephavenProviderFactory
+  - uid: Deephaven.Connector.SessionType
+    name: SessionType
+- uid: Deephaven.OpenAPI.Client
+  name: Deephaven.OpenAPI.Client
+  items:
+  - uid: Deephaven.OpenAPI.Client.AbstractOpenApiListener
+    name: AbstractOpenApiListener
+  - uid: Deephaven.OpenAPI.Client.AbstractWorkerListener
+    name: AbstractWorkerListener
+  - uid: Deephaven.OpenAPI.Client.Aggregate
+    name: Aggregate
+  - uid: Deephaven.OpenAPI.Client.AggregateCombo
+    name: AggregateCombo
+  - uid: Deephaven.OpenAPI.Client.DatabaseCatalog
+    name: DatabaseCatalog
+  - uid: Deephaven.OpenAPI.Client.DatabaseCatalogTable
+    name: DatabaseCatalogTable
+  - uid: Deephaven.OpenAPI.Client.DeephavenImports
+    name: DeephavenImports
+  - uid: Deephaven.OpenAPI.Client.IOpenApiClient
+    name: IOpenApiClient
+  - uid: Deephaven.OpenAPI.Client.IOpenApiListener
+    name: IOpenApiListener
+  - uid: Deephaven.OpenAPI.Client.IPersistentQueryConfig
+    name: IPersistentQueryConfig
+  - uid: Deephaven.OpenAPI.Client.IPersistentQueryConfigInternal
+    name: IPersistentQueryConfigInternal
+  - uid: Deephaven.OpenAPI.Client.IQueryScope
+    name: IQueryScope
+  - uid: Deephaven.OpenAPI.Client.IQueryTable
+    name: IQueryTable
+  - uid: Deephaven.OpenAPI.Client.IQueryTable_FluentExtensions
+    name: IQueryTable_FluentExtensions
+  - uid: Deephaven.OpenAPI.Client.IQueryTable_GetColumnExtensions
+    name: IQueryTable_GetColumnExtensions
+  - uid: Deephaven.OpenAPI.Client.IQueryTable_TaskColumnExtensions
+    name: IQueryTable_TaskColumnExtensions
+  - uid: Deephaven.OpenAPI.Client.IQueryTable_TaskExtensions
+    name: IQueryTable_TaskExtensions
+  - uid: Deephaven.OpenAPI.Client.ITableData
+    name: ITableData
+  - uid: Deephaven.OpenAPI.Client.ITableSnapshot
+    name: ITableSnapshot
+  - uid: Deephaven.OpenAPI.Client.ITableUpdate
+    name: ITableUpdate
+  - uid: Deephaven.OpenAPI.Client.IWorkerListener
+    name: IWorkerListener
+  - uid: Deephaven.OpenAPI.Client.IWorkerSession
+    name: IWorkerSession
+  - uid: Deephaven.OpenAPI.Client.LogMessage
+    name: LogMessage
+  - uid: Deephaven.OpenAPI.Client.OpenApi
+    name: OpenApi
+  - uid: Deephaven.OpenAPI.Client.OpenApiClient_Extensions
+    name: OpenApiClient_Extensions
+  - uid: Deephaven.OpenAPI.Client.OpenApiEventDispatcher
+    name: OpenApiEventDispatcher
+  - uid: Deephaven.OpenAPI.Client.PersistentQueryStatus
+    name: PersistentQueryStatus
+  - uid: Deephaven.OpenAPI.Client.PrintUtils
+    name: PrintUtils
+  - uid: Deephaven.OpenAPI.Client.QueryScope_Extensions
+    name: QueryScope_Extensions
+  - uid: Deephaven.OpenAPI.Client.QueryTableSnapshotHandler
+    name: QueryTableSnapshotHandler
+  - uid: Deephaven.OpenAPI.Client.QueryTableUpdateHandler
+    name: QueryTableUpdateHandler
+  - uid: Deephaven.OpenAPI.Client.RowRange
+    name: RowRange
+  - uid: Deephaven.OpenAPI.Client.RowRangeSet
+    name: RowRangeSet
+  - uid: Deephaven.OpenAPI.Client.SortDirection
+    name: SortDirection
+  - uid: Deephaven.OpenAPI.Client.SortPair
+    name: SortPair
+  - uid: Deephaven.OpenAPI.Client.SortPair_Extensions
+    name: SortPair_Extensions
+  - uid: Deephaven.OpenAPI.Client.WorkerEventDispatcher
+    name: WorkerEventDispatcher
+  - uid: Deephaven.OpenAPI.Client.WorkerOptions
+    name: WorkerOptions
+- uid: Deephaven.OpenAPI.Client.Data
+  name: Deephaven.OpenAPI.Client.Data
+  items:
+  - uid: Deephaven.OpenAPI.Client.Data.AbstractColumnData
+    name: AbstractColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.AbstractColumnData`2
+    name: AbstractColumnData<DataType, ColumnDataType>
+    name.vb: AbstractColumnData(Of DataType, ColumnDataType)
+  - uid: Deephaven.OpenAPI.Client.Data.AbstractColumnData`3
+    name: AbstractColumnData<EffectiveType, UnderlyingType, ColumnDataType>
+    name.vb: AbstractColumnData(Of EffectiveType, UnderlyingType, ColumnDataType)
+  - uid: Deephaven.OpenAPI.Client.Data.BigIntegerColumnData
+    name: BigIntegerColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.BooleanColumnData
+    name: BooleanColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.ByteColumnData
+    name: ByteColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.CharColumnData
+    name: CharColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.ColumnDataHolder
+    name: ColumnDataHolder
+  - uid: Deephaven.OpenAPI.Client.Data.ColumnType
+    name: ColumnType
+  - uid: Deephaven.OpenAPI.Client.Data.DateColumnData
+    name: DateColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.DBDateTime
+    name: DBDateTime
+  - uid: Deephaven.OpenAPI.Client.Data.DBDateTimeColumnData
+    name: DBDateTimeColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.DecimalColumnData
+    name: DecimalColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.DeephavenConstants
+    name: DeephavenConstants
+  - uid: Deephaven.OpenAPI.Client.Data.DHDate
+    name: DHDate
+  - uid: Deephaven.OpenAPI.Client.Data.DHDecimal
+    name: DHDecimal
+  - uid: Deephaven.OpenAPI.Client.Data.DHTime
+    name: DHTime
+  - uid: Deephaven.OpenAPI.Client.Data.DoubleColumnData
+    name: DoubleColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.FloatColumnData
+    name: FloatColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.IColumnData
+    name: IColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.IColumnDataInternal
+    name: IColumnDataInternal
+  - uid: Deephaven.OpenAPI.Client.Data.IntColumnData
+    name: IntColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.LongColumnData
+    name: LongColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.ShortColumnData
+    name: ShortColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.StringColumnData
+    name: StringColumnData
+  - uid: Deephaven.OpenAPI.Client.Data.TimeColumnData
+    name: TimeColumnData
+- uid: Deephaven.OpenAPI.Client.Fluent
+  name: Deephaven.OpenAPI.Client.Fluent
+  items:
+  - uid: Deephaven.OpenAPI.Client.Fluent.AndExpression
+    name: AndExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.AssignedColumn
+    name: AssignedColumn
+  - uid: Deephaven.OpenAPI.Client.Fluent.BoolCol
+    name: BoolCol
+  - uid: Deephaven.OpenAPI.Client.Fluent.BooleanExpression
+    name: BooleanExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.BooleanInstanceMethod
+    name: BooleanInstanceMethod
+  - uid: Deephaven.OpenAPI.Client.Fluent.BooleanLiteral
+    name: BooleanLiteral
+  - uid: Deephaven.OpenAPI.Client.Fluent.ComparisonOperator
+    name: ComparisonOperator
+  - uid: Deephaven.OpenAPI.Client.Fluent.Concat
+    name: Concat
+  - uid: Deephaven.OpenAPI.Client.Fluent.DateTimeCol
+    name: DateTimeCol
+  - uid: Deephaven.OpenAPI.Client.Fluent.DateTimeCol`1
+    name: DateTimeCol<T>
+    name.vb: DateTimeCol(Of T)
+  - uid: Deephaven.OpenAPI.Client.Fluent.DateTimeDBDateTimeValue
+    name: DateTimeDBDateTimeValue
+  - uid: Deephaven.OpenAPI.Client.Fluent.DateTimeExpression
+    name: DateTimeExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.DateTimeStringLiteral
+    name: DateTimeStringLiteral
+  - uid: Deephaven.OpenAPI.Client.Fluent.Expression
+    name: Expression
+  - uid: Deephaven.OpenAPI.Client.Fluent.Expression_Extensions
+    name: Expression_Extensions
+  - uid: Deephaven.OpenAPI.Client.Fluent.IColumn
+    name: IColumn
+  - uid: Deephaven.OpenAPI.Client.Fluent.IIrisRepresentable
+    name: IIrisRepresentable
+  - uid: Deephaven.OpenAPI.Client.Fluent.IMatchWithColumn
+    name: IMatchWithColumn
+  - uid: Deephaven.OpenAPI.Client.Fluent.IrisRepresentable_Extensions
+    name: IrisRepresentable_Extensions
+  - uid: Deephaven.OpenAPI.Client.Fluent.ISelectColumn
+    name: ISelectColumn
+  - uid: Deephaven.OpenAPI.Client.Fluent.IsNull
+    name: IsNull
+  - uid: Deephaven.OpenAPI.Client.Fluent.MatchWithColumn
+    name: MatchWithColumn
+  - uid: Deephaven.OpenAPI.Client.Fluent.NotExpression
+    name: NotExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumCol
+    name: NumCol
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumCol`1
+    name: NumCol<T>
+    name.vb: NumCol(Of T)
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumericBinaryOperator
+    name: NumericBinaryOperator
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumericExpression
+    name: NumericExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumericLiteral
+    name: NumericLiteral
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumericLiteral`1
+    name: NumericLiteral<T>
+    name.vb: NumericLiteral(Of T)
+  - uid: Deephaven.OpenAPI.Client.Fluent.NumericUnaryOperator
+    name: NumericUnaryOperator
+  - uid: Deephaven.OpenAPI.Client.Fluent.OrExpression
+    name: OrExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.StrCol
+    name: StrCol
+  - uid: Deephaven.OpenAPI.Client.Fluent.StringExpression
+    name: StringExpression
+  - uid: Deephaven.OpenAPI.Client.Fluent.StringLiteral
+    name: StringLiteral

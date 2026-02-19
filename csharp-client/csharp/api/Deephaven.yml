@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: Deephaven
+  commentId: N:Deephaven
+  id: Deephaven
+  children:
+  - Deephaven.DemoConstants
+  langs:
+  - csharp
+  - vb
+  name: Deephaven
+  nameWithType: Deephaven
+  fullName: Deephaven
+  type: Namespace
+  assemblies:
+  - DeephavenOpenAPI
+references:
+- uid: Deephaven.DemoConstants
+  commentId: T:Deephaven.DemoConstants
+  name: DemoConstants
+  nameWithType: DemoConstants
+  fullName: Deephaven.DemoConstants

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>DeephavenOpenAPI.SampleClient</AssemblyName>
+    <RootNamespace>SampleClient</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Deephaven.Legacy.Client" Version="24.5.551.1" />
+  </ItemGroup>
+</Project>
