@@ -11,7 +11,13 @@
   <PropertyGroup>
     <DEEPHAVEN_SIGNING_KEYS Condition=" '$(DEEPHAVEN_SIGNING_KEYS)' == '' ">..\dev-keys</DEEPHAVEN_SIGNING_KEYS>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
-    <AssemblyName>DeephavenOpenAPI</AssemblyName>
+    <AssemblyName>Deephaven.Legacy.Client</AssemblyName>
+    <Authors>Deephaven Authors</Authors>
+    <Description>A .NET library for accessing data from Deephaven grizzly servers with legacy workers. This library is deprecated.</Description>
+    <RepositoryUrl>https://github.com/deephaven/deephaven-enterprise-csharp</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Copyright>Copyright (c) 2026 Deephaven Data Labs and Patent Pending</Copyright>
+    <PackageReadmeFile>README-nuget.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>24.5.551.1</Version>
     <SignAssembly>true</SignAssembly>
@@ -22,6 +28,7 @@
 
   <ItemGroup>
     <None Include="$(DEEPHAVEN_SIGNING_KEYS)\Deephaven.snk" Link="Deephaven.snk" />
+    <None Include="README-nuget.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
   <ItemGroup>
